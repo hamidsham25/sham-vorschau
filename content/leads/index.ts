@@ -1,6 +1,10 @@
 import type { Lead } from "@/lib/lead";
-import demoGarten from "./demo-garten";
+import gartenwerkHannover from "./gartenwerk-hannover";
 
+/**
+ * Echte Vorschau-Leads für /[slug].
+ * Demo-Inhalte gehören nicht hierher, sondern nach content/demos.ts (/demo/[familie]).
+ */
 export const leads: Record<string, Lead> = {
-  [demoGarten.slug]: demoGarten,
+  [gartenwerkHannover.slug]: gartenwerkHannover,
 };

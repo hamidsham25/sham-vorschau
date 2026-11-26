@@ -1,5 +1,9 @@
 import type { Lead } from "@/lib/lead";
 
+/**
+ * Beispiel-Lead für die Garten-Demo unter /demo/garten.
+ * Nicht in content/leads/index.ts registrieren (kein /[slug]).
+ */
 const demoGarten = {
   slug: "demo-garten",
   familie: "garten",

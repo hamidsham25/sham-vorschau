@@ -1,4 +1,6 @@
-import type { Familie, Vorschau } from "@/lib/lead";
+import gartenUndLandschaftsbau from "@/content/branchen/garten-und-landschaftsbau";
+import demoGarten from "@/content/leads/demo-garten";
+import { mergeLead, type Familie, type Vorschau } from "@/lib/lead";
 
 function demoFuer(
   familie: Familie,
@@ -51,17 +53,9 @@ function demoFuer(
   };
 }
 
-/** Neutrale Demo-Inhalte pro Familie für /demo/[familie] */
+/** Neutrale Demo-Inhalte pro Familie, nur für /demo/[familie] */
 export const demoVorschaue: Record<Familie, Vorschau> = {
-  garten: demoFuer(
-    "garten",
-    "Demo Garten",
-    "Grünflächen mit Substanz.",
-    "Beispielseite für die Template-Familie Garten: Gärten, Außenanlagen und Pflege.",
-    "Gartengestaltung",
-    "Planung und Umsetzung von Gartenanlagen für private und gewerbliche Grundstücke.",
-    { dunkel: "#1a2e1a", hell: "#f7f5f0", akzent: "#4a7c3f" },
-  ),
+  garten: mergeLead(demoGarten, gartenUndLandschaftsbau),
   bau: demoFuer(
     "bau",
     "Demo Bau",

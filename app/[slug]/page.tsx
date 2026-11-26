@@ -8,11 +8,19 @@ type Props = {
 };
 
 export function generateStaticParams() {
-  return getAllLeadSlugs().map((slug) => ({ slug }));
+  return getAllLeadSlugs()
+    .filter((slug) => !slug.startsWith("demo-"))
+    .map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
+  if (slug.startsWith("demo-")) {
+    return {
+      title: "Vorschau",
+      robots: { index: false, follow: false },
+    };
+  }
   try {
     const vorschau = getVorschau(slug);
     return {
@@ -29,6 +37,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function LeadPage({ params }: Props) {
   const { slug } = await params;
+
+  // Demo-Inhalte nur unter /demo/[familie]
+  if (slug.startsWith("demo-")) {
+    notFound();
+  }
 
   let vorschau;
   try {
